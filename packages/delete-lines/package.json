@@ -1,0 +1,69 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+        "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-118023-9228-rbh4xd.xrvy3hxgvi"
+    ]
+  ],
+  "_from": "..\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+  "_id": "delete-lines@0.5.0",
+  "_inCache": true,
+  "_location": "/delete-lines",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+    "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+  "_shasum": "24f49a11acad728f56ab0dcfee1ee3b62ea2c924",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-118023-9228-9rm7go.pnwmi\\package.tgz",
+  "_where": "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-118023-9228-rbh4xd.xrvy3hxgvi",
+  "activationCommands": {
+    "atom-workspace": "delete-lines:toggle"
+  },
+  "bugs": {
+    "url": "https://github.com/gavynriebau/delete-lines/issues"
+  },
+  "dependencies": {},
+  "description": "Delete all lines matching a pattern",
+  "devDependencies": {
+    "bower": "1.x",
+    "gulp": "^3.9"
+  },
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/gavynriebau/delete-lines#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/delete-lines",
+  "name": "delete-lines",
+  "optionalDependencies": {},
+  "readme": "# delete-lines package\n\nDelete all lines matching a pattern.\n\nThis is useful for quickly filtering files to certain text of interest.  \nMatches can be inverted to filter to only lines containing a pattern.\n\n![A screenshot of your package](https://cloud.githubusercontent.com/assets/11895736/9059170/408d4820-3ada-11e5-953c-642156139826.gif)\n_**Figure 1**: The above shows removing all lines that don't contain the word \"POST\"_\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavynriebau/delete-lines.git"
+  },
+  "scripts": {
+    "prepublish": "bower install"
+  },
+  "version": "0.5.0"
+}

@@ -1,0 +1,45 @@
+"*":
+  core:
+    disabledPackages: [
+      "dbg"
+      "dbg-gdb"
+      "linter-gcc"
+      "linter"
+      "linter-ui-default"
+      "gpp-compiler"
+      "spell-check"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "atom-monokai"
+    ]
+    uriHandlerRegistration: "always"
+  editor:
+    softWrap: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "92e3df09-7a2f-495e-887b-8866e86a3d42"
+  "gpp-compiler":
+    compileToTmpDirectory: false
+  "language-log": {}
+  "linter-gcc":
+    execPath: "g++"
+    gccLintOnTheFly: true
+  "linter-ui-default":
+    showPanel: true
+  "markdown-preview":
+    useGitHubStyle: true
+  minimap: {}
+  "relative-numbers":
+    showAbsoluteNumbersInInsertMode: false
+    softWrapsCount: false
+  "tabs-to-spaces": {}
+  "vim-mode-plus":
+    useSmartcaseForSearch: true
+  welcome:
+    showOnStartup: false
+".log.source":
+  editor:
+    softWrap: true

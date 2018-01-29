@@ -1,0 +1,270 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+        "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-117813-12056-ttc7e4.1ktv2huxr"
+    ]
+  ],
+  "_from": "..\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+  "_id": "output-panel@0.3.4",
+  "_inCache": true,
+  "_location": "/output-panel",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+    "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+  "_shasum": "3034fcb260f4efdd27631e947aa12a0f01eeaeb4",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-12056-1weius9.dvym0a4i\\package.tgz",
+  "_where": "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-117813-12056-ttc7e4.1ktv2huxr",
+  "bugs": {
+    "url": "https://github.com/31i73/atom-output-panel/issues"
+  },
+  "dependencies": {
+    "cross-spawn": "^4.0.0",
+    "node-pty": "^0.6.0",
+    "xterm": "^2.5.0"
+  },
+  "description": "A bottom output panel for running processes and displaying output",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.17.0 <2.0.0"
+  },
+  "homepage": "https://github.com/31i73/atom-output-panel#readme",
+  "keywords": [
+    "output",
+    "bottom",
+    "panel",
+    "process",
+    "terminal"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "output-panel",
+  "optionalDependencies": {
+    "node-pty": "^0.6.0"
+  },
+  "providedServices": {
+    "output-panel": {
+      "description": "Allows control of an output panel",
+      "versions": {
+        "1.0.0": "provideOutputPanel"
+      }
+    }
+  },
+  "readme": "# output-panel package\n\nA bottom output panel for running processes and displaying output\n\n![Output Panel screenshot](http://i.imgur.com/e57nAJp.png)\n\n## Commands:\n\n`output-panel:show` - Show the panel  \n`output-panel:hide` - Hide the panel  \n`output-panel:toggle` - Toggle the panel  \n`output-panel:run` - TODO: prompt the user to run a program in the panel  \n`output-panel:stop` - TODO: Stop any program currently running in the panel  \n`core:cancel` - Hide the panel  \n\n## Service: `output-panel`\n\nReturns an object with the following functions:\n\n`run(show, path:String, ?args:String[], ?options)` - Run a process in the panel (this will `stop()` any existing, first)\n\n> `show` - If `true` will immediately display the panel. if `\"auto\"` will automatically display the panel if the program displays output. if `false` will leave the panel in its current state.\n\n> `path` - The path to the program to execute\n\n> `args` - Optional. An array of arguments to pass to the program\n\n> `options` - Optional. An options object compatible with `child_process.spawn()`\n\nReturns a `child_process` compatible object of the running process\n\n`stop()` - Stop any process currently running in the panel\n\n`show()` - Display the panel\n\n`hide()` - Hide the panel\n\n`toggle()` - Toggle the panel\n\n`print(line:String, ?newline=true)` - Print a `line` of text to the panel, followed by an optional `newline` (default)\n\n`clear()` - Clear the panel\n\n`getInteractiveSession()` - Returns an `InteractiveSession` for retrieving user input. This session must be freed with `discard` when no longer used.\n\n### InteractiveSession\n\n`discard()` - Free this session\n\n`pty` - The pty instance of this session (see https://www.npmjs.com/package/node-pty for more details)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/31i73/atom-output-panel.git"
+  },
+  "version": "0.3.4",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "cross-spawn",
+        "version": "4.0.2",
+        "path": "node_modules\\cross-spawn\\index.js"
+      },
+      {
+        "name": "isexe",
+        "version": "2.0.0",
+        "path": "node_modules\\isexe\\index.js"
+      },
+      {
+        "name": "lru-cache",
+        "version": "4.1.1",
+        "path": "node_modules\\lru-cache\\index.js"
+      },
+      {
+        "name": "pseudomap",
+        "version": "1.0.2",
+        "path": "node_modules\\pseudomap\\map.js"
+      },
+      {
+        "name": "which",
+        "version": "1.3.0",
+        "path": "node_modules\\which\\which.js"
+      },
+      {
+        "name": "xterm",
+        "version": "2.9.2",
+        "path": "node_modules\\xterm\\lib\\xterm.js"
+      },
+      {
+        "name": "yallist",
+        "version": "2.1.2",
+        "path": "node_modules\\yallist\\yallist.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib\\InteractiveSession.coffee",
+        "lib\\main.coffee",
+        "lib\\view\\Panel.coffee"
+      ],
+      ".js": [
+        "node_modules\\cross-spawn\\index.js",
+        "node_modules\\cross-spawn\\lib\\enoent.js",
+        "node_modules\\cross-spawn\\lib\\hasBrokenSpawn.js",
+        "node_modules\\cross-spawn\\lib\\parse.js",
+        "node_modules\\cross-spawn\\lib\\resolveCommand.js",
+        "node_modules\\isexe\\index.js",
+        "node_modules\\isexe\\mode.js",
+        "node_modules\\isexe\\windows.js",
+        "node_modules\\lru-cache\\index.js",
+        "node_modules\\pseudomap\\map.js",
+        "node_modules\\pseudomap\\pseudomap.js",
+        "node_modules\\which\\which.js",
+        "node_modules\\xterm\\dist\\addons\\attach\\attach.js",
+        "node_modules\\xterm\\dist\\addons\\fit\\fit.js",
+        "node_modules\\xterm\\dist\\addons\\fullscreen\\fullscreen.js",
+        "node_modules\\xterm\\dist\\addons\\linkify\\linkify.js",
+        "node_modules\\xterm\\dist\\addons\\search\\search.js",
+        "node_modules\\xterm\\dist\\addons\\terminado\\terminado.js",
+        "node_modules\\xterm\\dist\\xterm.js",
+        "node_modules\\xterm\\gulpfile.js",
+        "node_modules\\xterm\\lib\\addons\\attach\\attach.js",
+        "node_modules\\xterm\\lib\\addons\\fit\\fit.js",
+        "node_modules\\xterm\\lib\\addons\\fullscreen\\fullscreen.js",
+        "node_modules\\xterm\\lib\\addons\\search\\search.js",
+        "node_modules\\xterm\\lib\\addons\\search\\SearchHelper.js",
+        "node_modules\\xterm\\lib\\addons\\terminado\\terminado.js",
+        "node_modules\\xterm\\lib\\Buffer.js",
+        "node_modules\\xterm\\lib\\Buffer.test.js",
+        "node_modules\\xterm\\lib\\BufferSet.js",
+        "node_modules\\xterm\\lib\\BufferSet.test.js",
+        "node_modules\\xterm\\lib\\Charsets.js",
+        "node_modules\\xterm\\lib\\CompositionHelper.js",
+        "node_modules\\xterm\\lib\\CompositionHelper.test.js",
+        "node_modules\\xterm\\lib\\EscapeSequences.js",
+        "node_modules\\xterm\\lib\\EventEmitter.js",
+        "node_modules\\xterm\\lib\\EventEmitter.test.js",
+        "node_modules\\xterm\\lib\\handlers\\Clipboard.js",
+        "node_modules\\xterm\\lib\\handlers\\Clipboard.test.js",
+        "node_modules\\xterm\\lib\\InputHandler.js",
+        "node_modules\\xterm\\lib\\InputHandler.test.js",
+        "node_modules\\xterm\\lib\\Interfaces.js",
+        "node_modules\\xterm\\lib\\Linkifier.js",
+        "node_modules\\xterm\\lib\\Linkifier.test.js",
+        "node_modules\\xterm\\lib\\Parser.js",
+        "node_modules\\xterm\\lib\\Renderer.js",
+        "node_modules\\xterm\\lib\\SelectionManager.js",
+        "node_modules\\xterm\\lib\\SelectionManager.test.js",
+        "node_modules\\xterm\\lib\\SelectionModel.js",
+        "node_modules\\xterm\\lib\\SelectionModel.test.js",
+        "node_modules\\xterm\\lib\\Types.js",
+        "node_modules\\xterm\\lib\\utils\\Browser.js",
+        "node_modules\\xterm\\lib\\utils\\BufferLine.js",
+        "node_modules\\xterm\\lib\\utils\\CharMeasure.js",
+        "node_modules\\xterm\\lib\\utils\\CharMeasure.test.js",
+        "node_modules\\xterm\\lib\\utils\\CircularList.js",
+        "node_modules\\xterm\\lib\\utils\\CircularList.test.js",
+        "node_modules\\xterm\\lib\\utils\\DomElementObjectPool.js",
+        "node_modules\\xterm\\lib\\utils\\DomElementObjectPool.test.js",
+        "node_modules\\xterm\\lib\\utils\\Generic.js",
+        "node_modules\\xterm\\lib\\utils\\Mouse.js",
+        "node_modules\\xterm\\lib\\utils\\TestUtils.js",
+        "node_modules\\xterm\\lib\\Viewport.js",
+        "node_modules\\xterm\\lib\\Viewport.test.js",
+        "node_modules\\xterm\\lib\\xterm.js",
+        "node_modules\\xterm\\src\\addons\\attach\\attach.js",
+        "node_modules\\xterm\\src\\addons\\fit\\fit.js",
+        "node_modules\\xterm\\src\\addons\\fullscreen\\fullscreen.js",
+        "node_modules\\xterm\\src\\addons\\terminado\\terminado.js",
+        "node_modules\\xterm\\src\\xterm.js",
+        "node_modules\\yallist\\iterator.js",
+        "node_modules\\yallist\\yallist.js"
+      ],
+      ".json": [
+        "node_modules\\cross-spawn\\package.json",
+        "node_modules\\isexe\\package.json",
+        "node_modules\\lru-cache\\package.json",
+        "node_modules\\pseudomap\\package.json",
+        "node_modules\\which\\package.json",
+        "node_modules\\xterm\\bower.json",
+        "node_modules\\xterm\\dist\\addons\\attach\\package.json",
+        "node_modules\\xterm\\dist\\addons\\fit\\package.json",
+        "node_modules\\xterm\\dist\\addons\\fullscreen\\package.json",
+        "node_modules\\xterm\\dist\\addons\\terminado\\package.json",
+        "node_modules\\xterm\\jsdoc.json",
+        "node_modules\\xterm\\lib\\addons\\attach\\package.json",
+        "node_modules\\xterm\\lib\\addons\\fit\\package.json",
+        "node_modules\\xterm\\lib\\addons\\fullscreen\\package.json",
+        "node_modules\\xterm\\lib\\addons\\terminado\\package.json",
+        "node_modules\\xterm\\package.json",
+        "node_modules\\xterm\\src\\addons\\attach\\package.json",
+        "node_modules\\xterm\\src\\addons\\fit\\package.json",
+        "node_modules\\xterm\\src\\addons\\fullscreen\\package.json",
+        "node_modules\\xterm\\src\\addons\\search\\tsconfig.json",
+        "node_modules\\xterm\\src\\addons\\terminado\\package.json",
+        "node_modules\\xterm\\tsconfig.json",
+        "node_modules\\xterm\\tslint.json",
+        "node_modules\\xterm\\typings.json",
+        "node_modules\\yallist\\package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "lib\\view",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "cross-spawn": "^4.0.0",
+          "node-pty": "^0.6.0",
+          "xterm": "^2.5.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\cross-spawn",
+          "node_modules\\cross-spawn\\lib"
+        ],
+        "dependencies": {
+          "lru-cache": "^4.0.1",
+          "which": "^1.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\lru-cache"
+        ],
+        "dependencies": {
+          "pseudomap": "^1.0.2",
+          "yallist": "^2.1.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\which"
+        ],
+        "dependencies": {
+          "isexe": "^2.0.0"
+        }
+      }
+    ]
+  }
+}

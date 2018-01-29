@@ -1,0 +1,304 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+        "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-117813-8628-on09e7.zi9d9ozuxr"
+    ]
+  ],
+  "_from": "..\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+  "_id": "dbg-gdb@1.7.7",
+  "_inCache": true,
+  "_location": "/dbg-gdb",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+    "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+  "_shasum": "0a91ad2cc5029047affcd4c657e1bf04be678a2b",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-8628-1hlsk4t.qxiqrxjemi\\package.tgz",
+  "_where": "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-117813-8628-on09e7.zi9d9ozuxr",
+  "bugs": {
+    "url": "https://github.com/31i73/atom-dbg-gdb/issues"
+  },
+  "consumedServices": {
+    "dbg": {
+      "versions": {
+        "^1.0.0": "consumeDbg"
+      }
+    },
+    "output-panel": {
+      "versions": {
+        "^1.0.0": "consumeOutputPanel",
+        "^0.1.0": "consumeOutputPanel"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-package-deps": "^4.0.1"
+  },
+  "description": "An interactive GDB debugger for Atom",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/31i73/atom-dbg-gdb#readme",
+  "keywords": [
+    "gdb",
+    "debugger",
+    "C",
+    "C++",
+    "D",
+    "Go",
+    "Objective-C",
+    "Fortran",
+    "Pascal",
+    "Rust",
+    "assembly",
+    "Ada"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "dbg-gdb",
+  "optionalDependencies": {},
+  "package-deps": [
+    "dbg",
+    "output-panel"
+  ],
+  "providedServices": {
+    "dbgProvider": {
+      "description": "Provides a dbg gdb debugger",
+      "versions": {
+        "1.1.0": "provideDbgProvider"
+      }
+    }
+  },
+  "readme": "# dbg-gdb package\n\nAn interactive GDB debugger for Atom\n\n![Debug screenshot](http://i.imgur.com/XcI592U.png)\n\n## How to use\n\n1. Right click on an executable in the treeview, select `Debug this file`, and click `Save`\n2. Toggle breakpoints by clicking beside line numbers or pressing `F9`\n3. Press `F5`, and select the executable\n4. ...\n5. Profit!\n\n## Service: `dbgProvider`\n\nCreates a `dbgProvider` for GDB, see [basic dbgProvider  service description](https://github.com/31i73/atom-dbg#consumed-service-dbgprovider)\n\n## Supported options\n> `path` - *Optional*. The path to the file to debug  \n> `args` - *Optional*. An array of arguments to pass to the file being debugged  \n> `cwd` - *Optional*. The working directory to use when debugging  \n> `env_vars` - *Optional*. An array of environmental variables, ex: ['VAR1=9', 'VAR2=thing', ...]  \n> `gdb_executable` - *Optional*. The full command used to execute gdb (defaults to 'gdb')  \n> `gdb_arguments` - *Optional*. An array of extra arguments to pass to gdb (note that the arguments ['-quiet', '--interpreter=mi2'] are always included first)  \n> `gdb_commands` - *Optional*. An array of commands to pass to gdb, once active (these are executed last of all, but right before '-exec-run')  \n\nFor a list of features and all available keyboard shortcuts, please see [dbg](https://atom.io/packages/dbg)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/31i73/atom-dbg-gdb.git"
+  },
+  "version": "1.7.7",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "atom-package-deps",
+        "version": "4.6.0",
+        "path": "node_modules\\atom-package-deps\\lib\\index.js"
+      },
+      {
+        "name": "atom-package-path",
+        "version": "1.1.0",
+        "path": "node_modules\\atom-package-path\\lib\\index.js"
+      },
+      {
+        "name": "consistent-env",
+        "version": "1.3.1",
+        "path": "node_modules\\consistent-env\\lib\\index.js"
+      },
+      {
+        "name": "is-utf8",
+        "version": "0.2.1",
+        "path": "node_modules\\is-utf8\\is-utf8.js"
+      },
+      {
+        "name": "lodash.uniq",
+        "version": "4.5.0",
+        "path": "node_modules\\lodash.uniq\\index.js"
+      },
+      {
+        "name": "sb-callsite",
+        "version": "1.1.2",
+        "path": "node_modules\\sb-callsite\\lib\\main.js"
+      },
+      {
+        "name": "sb-exec",
+        "version": "3.1.0",
+        "path": "node_modules\\sb-exec\\lib\\index.js"
+      },
+      {
+        "name": "sb-fs",
+        "version": "3.0.0",
+        "path": "node_modules\\sb-fs\\lib\\index.js"
+      },
+      {
+        "name": "sb-memoize",
+        "version": "1.0.2",
+        "path": "node_modules\\sb-memoize\\lib\\index.js"
+      },
+      {
+        "name": "sb-npm-path",
+        "version": "2.0.0",
+        "path": "node_modules\\sb-npm-path\\lib\\index.js"
+      },
+      {
+        "name": "sb-promisify",
+        "version": "2.0.2",
+        "path": "node_modules\\sb-promisify\\lib\\index.js"
+      },
+      {
+        "name": "semver",
+        "version": "5.4.1",
+        "path": "node_modules\\semver\\semver.js"
+      },
+      {
+        "name": "strip-bom-buf",
+        "version": "1.0.0",
+        "path": "node_modules\\strip-bom-buf\\index.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib\\main.coffee",
+        "lib\\parseMi2.coffee"
+      ],
+      ".json": [
+        "node_modules\\atom-package-deps\\.eslintrc.json",
+        "node_modules\\atom-package-deps\\package.json",
+        "node_modules\\atom-package-path\\package.json",
+        "node_modules\\consistent-env\\.eslintrc.json",
+        "node_modules\\consistent-env\\package.json",
+        "node_modules\\is-utf8\\package.json",
+        "node_modules\\lodash.uniq\\package.json",
+        "node_modules\\sb-callsite\\package.json",
+        "node_modules\\sb-exec\\.eslintrc.json",
+        "node_modules\\sb-exec\\package.json",
+        "node_modules\\sb-fs\\package.json",
+        "node_modules\\sb-memoize\\.eslintrc.json",
+        "node_modules\\sb-memoize\\package.json",
+        "node_modules\\sb-npm-path\\.eslintrc.json",
+        "node_modules\\sb-npm-path\\package.json",
+        "node_modules\\sb-promisify\\package.json",
+        "node_modules\\semver\\package.json",
+        "node_modules\\strip-bom-buf\\package.json",
+        "package.json"
+      ],
+      ".js": [
+        "node_modules\\atom-package-deps\\lib\\helpers.js",
+        "node_modules\\atom-package-deps\\lib\\index.js",
+        "node_modules\\atom-package-deps\\lib\\types.js",
+        "node_modules\\atom-package-deps\\lib\\view.js",
+        "node_modules\\atom-package-path\\lib\\index.js",
+        "node_modules\\consistent-env\\lib\\helpers.js",
+        "node_modules\\consistent-env\\lib\\index.js",
+        "node_modules\\is-utf8\\is-utf8.js",
+        "node_modules\\lodash.uniq\\index.js",
+        "node_modules\\sb-callsite\\lib\\main.js",
+        "node_modules\\sb-exec\\decls\\jasmine.js",
+        "node_modules\\sb-exec\\lib\\helpers.js",
+        "node_modules\\sb-exec\\lib\\index.js",
+        "node_modules\\sb-exec\\lib\\types.js",
+        "node_modules\\sb-fs\\lib\\index.js",
+        "node_modules\\sb-memoize\\lib\\index.js",
+        "node_modules\\sb-npm-path\\decls\\jasmine.js",
+        "node_modules\\sb-npm-path\\lib\\helpers.js",
+        "node_modules\\sb-npm-path\\lib\\index.js",
+        "node_modules\\sb-promisify\\lib\\index.js",
+        "node_modules\\semver\\semver.js",
+        "node_modules\\strip-bom-buf\\index.js"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          ""
+        ],
+        "dependencies": {
+          "atom-package-deps": "^4.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\atom-package-deps",
+          "node_modules\\atom-package-deps\\lib"
+        ],
+        "dependencies": {
+          "atom-package-path": "^1.1.0",
+          "sb-exec": "^3.0.1",
+          "sb-fs": "^3.0.0",
+          "semver": "^5.3.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\atom-package-path\\lib",
+          "node_modules\\atom-package-path",
+          "node_modules\\atom-package-path\\spec"
+        ],
+        "dependencies": {
+          "sb-callsite": "^1.1.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\consistent-env",
+          "node_modules\\consistent-env\\lib"
+        ],
+        "dependencies": {
+          "lodash.uniq": "^4.5.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\sb-exec",
+          "node_modules\\sb-exec\\decls",
+          "node_modules\\sb-exec\\lib"
+        ],
+        "dependencies": {
+          "consistent-env": "^1.2.0",
+          "lodash.uniq": "^4.5.0",
+          "sb-npm-path": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\sb-fs\\lib",
+          "node_modules\\sb-fs"
+        ],
+        "dependencies": {
+          "sb-promisify": "^2.0.1",
+          "strip-bom-buf": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\sb-npm-path",
+          "node_modules\\sb-npm-path\\decls",
+          "node_modules\\sb-npm-path\\lib"
+        ],
+        "dependencies": {
+          "sb-memoize": "^1.0.2",
+          "sb-promisify": "^2.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\strip-bom-buf"
+        ],
+        "dependencies": {
+          "is-utf8": "^0.2.1"
+        }
+      }
+    ]
+  }
+}

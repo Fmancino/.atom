@@ -1,0 +1,953 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+        "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-117813-10344-1l510xg.10z0fz85mi"
+    ]
+  ],
+  "_from": "..\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+  "_id": "dbg@1.6.2",
+  "_inCache": true,
+  "_location": "/dbg",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+    "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+  "_shasum": "c68bafd93b48118c9e4c34818938c302a9542b48",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-117813-10344-uqizkg.q5jiofxbt9\\package.tgz",
+  "_where": "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-117813-10344-1l510xg.10z0fz85mi",
+  "bugs": {
+    "url": "https://github.com/31i73/atom-dbg/issues"
+  },
+  "consumedServices": {
+    "dbgProvider": {
+      "versions": {
+        "^1.1.0": "consumeDbgProvider"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-select-list": "^0.0.16",
+    "chokidar": "^1.6.0",
+    "cson-parser": "^1.3.0"
+  },
+  "description": "An interactive debugger frontend",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.17.0 <2.0.0"
+  },
+  "homepage": "https://github.com/31i73/atom-dbg#readme",
+  "keywords": [
+    "debug",
+    "debugger"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "dbg",
+  "optionalDependencies": {},
+  "providedServices": {
+    "dbg": {
+      "description": "Provides debug support in Atom",
+      "versions": {
+        "1.1.0": "provideDbg"
+      }
+    }
+  },
+  "readme": "# dbg package\n\nAn interactive debugger frontend\n\n![Debug screenshot](http://i.imgur.com/1Xuvll8.png)\n\n![Debug screenshot](http://i.imgur.com/XcI592U.png)\n\nSupports:\n\n* Breakpoints\n* Interactive debugger controls (Continue/pause/stop/step-over/step-in/step-out)\n* Inline hints automatically mark changed variables when stepping through code\n* Browsable callstack\n* Local variable browsing\n* Multiple debugger backends via provided `dbg` service\n\nCurrent available backends:  \n\n* [dbg-gdb](https://atom.io/packages/dbg-gdb) - Debug with gdb\n\n*Please install a backend to get started!*\n\n## Commands:\n\n`dbg:debug` - Begins a new debug session, or continues an existing  \n`dbg:continue` - Continues a paused, active debug session  \n`dbg:pause` - Pause  \n`dbg:pause-continue` - Toggle pause/continue (or begin anew if none active)  \n`dbg:step-over` - Step over the current line of code  \n`dbg:step-in` - Step into the current procedure  \n`dbg:step-out` - Complete and step out of the current procedure  \n`dbg:stop` - Stop debugging  \n`dbg:toggle-breakpoint` - Toggle a breakpoint on the currently active line  \n`dbg:clear-breakpoints` - Clear all breakpoints\n\n`dbg:custom-debug` - Opens the debug configuration panel  \n`dbg:select-config` - Opens the select list for choosing a saved debug configuration (.atom-dbg files)  \n\n## Debug Configuration Files:\n\nIf you need access to more options than are available in the config panel or you want to save different debug configs for easy use, you can click the save button from the debug config panel or create/amend a config file in the root directory of your project directory.\n\n**Supported files/formats:**  \n `.atom-dbg.json` - Config file in JSON format  \n `.atom-dbg.cson` - Config file in CSON format\n\n### Example:\n\nThis cson example creates debug configurations `client` and `server`, which can then be selected by starting a new debug session, or with the `dbg:select-config` command:\n\n```\nclient:\n\tdebugger: 'dbg-gdb'\n\tcwd: 'client'\n\tpath: 'client/bin'\n\targs: ['--connect', '1234']\n\nserver:\n\tdebugger: 'dbg-gdb'\n\tcwd: 'server'\n\tpath: 'server/bin'\n\targs: ['--port', '1234']\n```\n\n#### Config Parameters:\n`debugger` - *Optional*. Specifies which debugger backend to use (If omitted a suitable backend will be selected automatically, based on the `path` target file)  \n`file` - The target file to debug\n\nRefer to the specific backend documentation for a list of all other supported parameter options\n\n\n## Service: `dbg`\n\nReturns an object with the following events and functions:\n\n### Events:\n\n`start` - A debug session has begun  \n`stop` - A debug session has ended  \n\n### Functions:\n\n`debug(options?):Promise<Bool>` - Attempt to start a new debug session (any existing session will be `stop()`ed first)\n\nExample: `dbg.debug({ path: './myProg', args: ['testmode'] });`\n\n> `options` - An optional object with the following properties:\n\n>> `debugger` - *Optional*. The name of the dbg provider to use. (This can be omitted to auto-detect)  \n>> `path` - *Optional*. The path to the file to debug  \n>> `args` - *Optional*. An array of arguments to pass to the file being debugged  \n>> `cwd` - *Optional*. The working directory to use when debugging  \n>> `basedir` - *Optional*. The base dir for any relative paths  \n>> `...` - *Optional*. Custom debugger arguments  \n\n> If a `debugger` is not specified, every dbg provider will be queried with the options object provided;  \n> The first provider to respond as being compatible will be selected  \n> Note that the options supported vary depending on dbg providers, but `path`, `args` and `cwd` are recommended as defaults if relevant to the target  \n\nReturns a promise that fulfills as `true` if a valid dbg provider is found, or `false` if not.\n\nIf no options are passed and the user has configured valid settings in the config panel, these will be used instead. Alternatively, the config panel will be displayed and the returned promise will immediately fulfill as `true`.\n\n`stop()` - Cancel the currently active debug session  \n\n`customDebug(options?)` - Displays the configuration panel  \n\n> `options` - An optional object with the following properties:\n\n>> `debugger` - *Optional*. The name of the dbg provider to use. If set to an empty string, ``\"automatic\"`` will be selected  \n>> `path` - *Optional*. The path to the file to debug  \n>> `args` - *Optional*. An array of arguments to pass to the file being debugged  \n>> `cwd` - *Optional*. The working directory to use when debugging\n\n`continue()` - Continue  \n`pause()` - Pause  \n`pause_continue()` - Pause or continue (toggle)\n\n`stepOver()` - Step over the current line of code  \n`stepIn()` - Step into the current procedure  \n`stepOut()` - Complete and step out of the current procedure  \n\n`addBreakpoint(path:String, line:Int)` - Add breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`removeBreakpoint(path:String, line:Int)` - Remove a breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`toggleBreakpoint(path:String, line:Int)` - Toggle a breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`getBreakpoints()` - Return an array of all breakpoints. Each array item has the following properties:  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`hasBreakpoint(path:String, line:Int)` - Toggles a breakpoint at the specified location  \n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n## Consumed service: `dbgProvider`\n\nTo create a dbg provider provide a `dbgProvider` service with the following properties:\n\n`name` - The name of this provider  \n`description` - A brief one-line description of this provider  \n\n`canHandleOptions(options):Promise<Bool>` - A function that returns a promise that fulfilling as `true` if it is compatible with the provided debug options, or `false` if it is not\n> `options` - The options parameter passed to `debug()` of the `dbg` service\n\n`debug(options, api)` - A function to begin debugging  \n> `options` - The options parameter passed to `debug()` of the `dbg` service  \n> `api` - An object containing the following properties:\n>> `breakpoints` - An array of all breakpoints currently present  \n>> Each item in the array contains the following properties:\n>>> `path` - The absolute file path  \n>>> `line` - The line number (1-based)  \n\n>> `ui` - An object containing the following functions for controlling the dbg frontend:  \n>>> `setStack(stack:Frame[])` - Set the stacktrace display to the specified items.  \n>>> Frames are ordered from bottom to top, with index 0 being the entrypoint of the program and the highest index being the current executing location\n\n>>> Each `Frame` should have the following properties:  \n>>>> `name` - The friendly name of this location (\"main()\" etc)  \n>>>> `local:Bool` - Specifes if the location is locally accessible, or a system location (hidden by default unless at the top of the stack)  \n>>>> `file` - *Optional*. The absolute file path\n>>>> `path` - The displayed technical path  (`file.c:4`, `file.so:xbaadf00d` etc)  \n>>>> `line` - The line number (1-based)  \n>>>> `error` - *Optional*. If there is an error associated with this frame this should be a brief description (e.g. \"Division by zero\")  \n\n>>> `setVariables(variables:Variable[])` - The list of variables visible in the currently active frame\n\n>>>  Each `Variable` should have the following properties:\n>>>> `name` - The name of the variable  \n>>>> `type` - *Optional*. The type of the variable (as a String)  \n>>>> `value` - *Optional*. The value of the variable (as a String)  \n>>>> `expandable` - *Optional*. If `true` this variable may contain child properties. If expanded by the user `getVariableChildren()` will be called to retrieve them\n\n\n>>> `setFrame(frameIndex:Int)` - Set this index in the stack as the currently active frame, and navigate the Atom to this file and location if it exists  \n>>> If this frame in the stack is a system location then all system frames will be shown\n\n>>> `running()` - Mark the debug as current running  \n>>> `paused()` - Mark the debug as currently paused  \n>>> `stop()` - Abort the current debug in process (this will call `stop()` for the `dbg` service internally and then `stop()` on this packages `dbgProvider`)  \n\n>>> `showWarning(warning:String)` - Display the specified warning  \n>>> `showError(error:String)` - Display the specified error  \n\n`getVariableChildren(name):Promise<Variable[]>` - *Optional*. If any variables are marked as `expandable` this function may be called to retrieve them  \nIt will be passed the full dot-seperated path of the variable  \nIt should return a promise that fulfills an array of child variables, also with the following properties:\n> `name` - The name of the variable  \n> `type` - *Optional*. The type of the variable (as a String)  \n> `value` - *Optional*. The value of the variable (as a String)  \n> `expandable` - *Optional*. If `true` this variable may contain child properties. If expanded by the user `getVariableChildren()` will again be called to retrieve them\n\n`stop()` - This function is called when debugging has ceased  \nOnce this has been called the `api` property passed to `start()` should no longer be accessed  \n\n`continue()` - This function is called when the user request the debugger continue  \n`pause()` - This function is called when the user request the debugger pause  \n\n`selectFrame()` - This function is called when the user selects a frame from the stacktrace  \n\n`stepOver()` - This function is called when the user requests a step over  \n`stepIn()` - This function is called when the user requests step into  \n`stepOut()` - This function is called when the user requests step out  \n\n`addBreakpoint(breakpoint:Breakpoint)` - This function is called if the user adds a breakpoint during an active debug session  \nThe breakpoint contains the following properties:\n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n\n`removeBreakpoint(breakpoint:Breakpoint)` - This function is called if the user removes a breakpoint during an active debug session  \nThe breakpoint contains the following properties:\n> `path` - The absolute file path  \n> `line` - The line number (1-based)  \n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/31i73/atom-dbg.git"
+  },
+  "version": "1.6.2",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "anymatch",
+        "version": "1.3.2",
+        "path": "node_modules\\anymatch\\index.js"
+      },
+      {
+        "name": "arr-diff",
+        "version": "2.0.0",
+        "path": "node_modules\\arr-diff\\index.js"
+      },
+      {
+        "name": "arr-flatten",
+        "version": "1.1.0",
+        "path": "node_modules\\arr-flatten\\index.js"
+      },
+      {
+        "name": "array-unique",
+        "version": "0.2.1",
+        "path": "node_modules\\array-unique\\index.js"
+      },
+      {
+        "name": "async-each",
+        "version": "1.0.1",
+        "path": "node_modules\\async-each\\index.js"
+      },
+      {
+        "name": "atom-select-list",
+        "version": "0.0.16",
+        "path": "node_modules\\atom-select-list\\src\\select-list-view.js"
+      },
+      {
+        "name": "balanced-match",
+        "version": "1.0.0",
+        "path": "node_modules\\balanced-match\\index.js"
+      },
+      {
+        "name": "binary-extensions",
+        "version": "1.10.0",
+        "path": "node_modules\\binary-extensions\\binary-extensions.json"
+      },
+      {
+        "name": "brace-expansion",
+        "version": "1.1.8",
+        "path": "node_modules\\brace-expansion\\index.js"
+      },
+      {
+        "name": "braces",
+        "version": "1.8.5",
+        "path": "node_modules\\braces\\index.js"
+      },
+      {
+        "name": "chokidar",
+        "version": "1.7.0",
+        "path": "node_modules\\chokidar\\index.js"
+      },
+      {
+        "name": "coffee-script",
+        "version": "1.12.7",
+        "path": "node_modules\\coffee-script\\lib\\coffee-script\\coffee-script.js"
+      },
+      {
+        "name": "concat-map",
+        "version": "0.0.1",
+        "path": "node_modules\\concat-map\\index.js"
+      },
+      {
+        "name": "core-util-is",
+        "version": "1.0.2",
+        "path": "node_modules\\core-util-is\\lib\\util.js"
+      },
+      {
+        "name": "cson-parser",
+        "version": "1.3.5",
+        "path": "node_modules\\cson-parser\\lib\\cson-parser.js"
+      },
+      {
+        "name": "etch",
+        "version": "0.9.0",
+        "path": "node_modules\\etch\\lib\\index.js"
+      },
+      {
+        "name": "expand-brackets",
+        "version": "0.1.5",
+        "path": "node_modules\\expand-brackets\\index.js"
+      },
+      {
+        "name": "expand-range",
+        "version": "1.8.2",
+        "path": "node_modules\\expand-range\\index.js"
+      },
+      {
+        "name": "extglob",
+        "version": "0.3.2",
+        "path": "node_modules\\extglob\\index.js"
+      },
+      {
+        "name": "filename-regex",
+        "version": "2.0.1",
+        "path": "node_modules\\filename-regex\\index.js"
+      },
+      {
+        "name": "fill-range",
+        "version": "2.2.3",
+        "path": "node_modules\\fill-range\\index.js"
+      },
+      {
+        "name": "for-in",
+        "version": "1.0.2",
+        "path": "node_modules\\for-in\\index.js"
+      },
+      {
+        "name": "for-own",
+        "version": "0.1.5",
+        "path": "node_modules\\for-own\\index.js"
+      },
+      {
+        "name": "fuzzaldrin",
+        "version": "2.1.0",
+        "path": "node_modules\\fuzzaldrin\\lib\\fuzzaldrin.js"
+      },
+      {
+        "name": "glob-base",
+        "version": "0.3.0",
+        "path": "node_modules\\glob-base\\index.js"
+      },
+      {
+        "name": "glob-parent",
+        "version": "2.0.0",
+        "path": "node_modules\\glob-parent\\index.js"
+      },
+      {
+        "name": "graceful-fs",
+        "version": "4.1.11",
+        "path": "node_modules\\graceful-fs\\graceful-fs.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.3",
+        "path": "node_modules\\inherits\\inherits.js"
+      },
+      {
+        "name": "is-binary-path",
+        "version": "1.0.1",
+        "path": "node_modules\\is-binary-path\\index.js"
+      },
+      {
+        "name": "is-buffer",
+        "version": "1.1.5",
+        "path": "node_modules\\is-buffer\\index.js"
+      },
+      {
+        "name": "is-dotfile",
+        "version": "1.0.3",
+        "path": "node_modules\\is-dotfile\\index.js"
+      },
+      {
+        "name": "is-equal-shallow",
+        "version": "0.1.3",
+        "path": "node_modules\\is-equal-shallow\\index.js"
+      },
+      {
+        "name": "is-extendable",
+        "version": "0.1.1",
+        "path": "node_modules\\is-extendable\\index.js"
+      },
+      {
+        "name": "is-extglob",
+        "version": "1.0.0",
+        "path": "node_modules\\is-extglob\\index.js"
+      },
+      {
+        "name": "is-glob",
+        "version": "2.0.1",
+        "path": "node_modules\\is-glob\\index.js"
+      },
+      {
+        "name": "is-number",
+        "version": "2.1.0",
+        "path": "node_modules\\is-number\\index.js"
+      },
+      {
+        "name": "is-posix-bracket",
+        "version": "0.1.1",
+        "path": "node_modules\\is-posix-bracket\\index.js"
+      },
+      {
+        "name": "is-primitive",
+        "version": "2.0.0",
+        "path": "node_modules\\is-primitive\\index.js"
+      },
+      {
+        "name": "isarray",
+        "version": "1.0.0",
+        "path": "node_modules\\isarray\\index.js"
+      },
+      {
+        "name": "isobject",
+        "version": "2.1.0",
+        "path": "node_modules\\isobject\\index.js"
+      },
+      {
+        "name": "kind-of",
+        "version": "3.2.2",
+        "path": "node_modules\\kind-of\\index.js"
+      },
+      {
+        "name": "micromatch",
+        "version": "2.3.11",
+        "path": "node_modules\\micromatch\\index.js"
+      },
+      {
+        "name": "minimatch",
+        "version": "3.0.4",
+        "path": "node_modules\\minimatch\\minimatch.js"
+      },
+      {
+        "name": "normalize-path",
+        "version": "2.1.1",
+        "path": "node_modules\\normalize-path\\index.js"
+      },
+      {
+        "name": "object.omit",
+        "version": "2.0.1",
+        "path": "node_modules\\object.omit\\index.js"
+      },
+      {
+        "name": "parse-glob",
+        "version": "3.0.4",
+        "path": "node_modules\\parse-glob\\index.js"
+      },
+      {
+        "name": "path-is-absolute",
+        "version": "1.0.1",
+        "path": "node_modules\\path-is-absolute\\index.js"
+      },
+      {
+        "name": "preserve",
+        "version": "0.2.0",
+        "path": "node_modules\\preserve\\index.js"
+      },
+      {
+        "name": "process-nextick-args",
+        "version": "1.0.7",
+        "path": "node_modules\\process-nextick-args\\index.js"
+      },
+      {
+        "name": "randomatic",
+        "version": "1.1.7",
+        "path": "node_modules\\randomatic\\index.js"
+      },
+      {
+        "name": "is-number",
+        "version": "3.0.0",
+        "path": "node_modules\\randomatic\\node_modules\\is-number\\index.js"
+      },
+      {
+        "name": "kind-of",
+        "version": "3.2.2",
+        "path": "node_modules\\randomatic\\node_modules\\is-number\\node_modules\\kind-of\\index.js"
+      },
+      {
+        "name": "kind-of",
+        "version": "4.0.0",
+        "path": "node_modules\\randomatic\\node_modules\\kind-of\\index.js"
+      },
+      {
+        "name": "readable-stream",
+        "version": "2.3.3",
+        "path": "node_modules\\readable-stream\\readable.js"
+      },
+      {
+        "name": "readdirp",
+        "version": "2.1.0",
+        "path": "node_modules\\readdirp\\readdirp.js"
+      },
+      {
+        "name": "regex-cache",
+        "version": "0.4.4",
+        "path": "node_modules\\regex-cache\\index.js"
+      },
+      {
+        "name": "remove-trailing-separator",
+        "version": "1.1.0",
+        "path": "node_modules\\remove-trailing-separator\\index.js"
+      },
+      {
+        "name": "repeat-element",
+        "version": "1.1.2",
+        "path": "node_modules\\repeat-element\\index.js"
+      },
+      {
+        "name": "repeat-string",
+        "version": "1.6.1",
+        "path": "node_modules\\repeat-string\\index.js"
+      },
+      {
+        "name": "safe-buffer",
+        "version": "5.1.1",
+        "path": "node_modules\\safe-buffer\\index.js"
+      },
+      {
+        "name": "set-immediate-shim",
+        "version": "1.0.1",
+        "path": "node_modules\\set-immediate-shim\\index.js"
+      },
+      {
+        "name": "string_decoder",
+        "version": "1.0.3",
+        "path": "node_modules\\string_decoder\\lib\\string_decoder.js"
+      },
+      {
+        "name": "util-deprecate",
+        "version": "1.0.2",
+        "path": "node_modules\\util-deprecate\\node.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib\\ConfigManager.coffee",
+        "lib\\main.coffee",
+        "lib\\Ui.coffee",
+        "lib\\view\\BreakpointList.coffee",
+        "lib\\view\\ConfigList.coffee",
+        "lib\\view\\CustomPanel.coffee",
+        "lib\\view\\Pane.coffee",
+        "lib\\view\\SidePane.coffee",
+        "lib\\view\\StackList.coffee",
+        "lib\\view\\Toolbar.coffee",
+        "lib\\view\\VariableList.coffee"
+      ],
+      ".js": [
+        "node_modules\\anymatch\\index.js",
+        "node_modules\\arr-diff\\index.js",
+        "node_modules\\arr-flatten\\index.js",
+        "node_modules\\array-unique\\index.js",
+        "node_modules\\async-each\\index.js",
+        "node_modules\\atom-select-list\\src\\select-list-view.js",
+        "node_modules\\balanced-match\\index.js",
+        "node_modules\\brace-expansion\\index.js",
+        "node_modules\\braces\\index.js",
+        "node_modules\\chokidar\\index.js",
+        "node_modules\\chokidar\\lib\\fsevents-handler.js",
+        "node_modules\\chokidar\\lib\\nodefs-handler.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\browser.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\cake.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\coffee-script.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\command.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\grammar.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\helpers.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\index.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\lexer.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\nodes.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\optparse.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\parser.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\register.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\repl.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\rewriter.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\scope.js",
+        "node_modules\\coffee-script\\lib\\coffee-script\\sourcemap.js",
+        "node_modules\\coffee-script\\register.js",
+        "node_modules\\coffee-script\\repl.js",
+        "node_modules\\concat-map\\example\\map.js",
+        "node_modules\\concat-map\\index.js",
+        "node_modules\\core-util-is\\lib\\util.js",
+        "node_modules\\core-util-is\\test.js",
+        "node_modules\\cson-parser\\lib\\cson-parser.js",
+        "node_modules\\cson-parser\\lib\\parse.js",
+        "node_modules\\cson-parser\\lib\\stringify.js",
+        "node_modules\\etch\\lib\\component-helpers.js",
+        "node_modules\\etch\\lib\\default-scheduler.js",
+        "node_modules\\etch\\lib\\dom.js",
+        "node_modules\\etch\\lib\\event-listener-props.js",
+        "node_modules\\etch\\lib\\index.js",
+        "node_modules\\etch\\lib\\patch.js",
+        "node_modules\\etch\\lib\\render.js",
+        "node_modules\\etch\\lib\\scheduler-assignment.js",
+        "node_modules\\etch\\lib\\svg-attribute-translations.js",
+        "node_modules\\etch\\lib\\svg-tags.js",
+        "node_modules\\etch\\lib\\update-props.js",
+        "node_modules\\expand-brackets\\index.js",
+        "node_modules\\expand-range\\index.js",
+        "node_modules\\extglob\\index.js",
+        "node_modules\\filename-regex\\index.js",
+        "node_modules\\fill-range\\index.js",
+        "node_modules\\for-in\\index.js",
+        "node_modules\\for-own\\index.js",
+        "node_modules\\fuzzaldrin\\lib\\filter.js",
+        "node_modules\\fuzzaldrin\\lib\\fuzzaldrin.js",
+        "node_modules\\fuzzaldrin\\lib\\matcher.js",
+        "node_modules\\fuzzaldrin\\lib\\scorer.js",
+        "node_modules\\glob-base\\index.js",
+        "node_modules\\glob-parent\\index.js",
+        "node_modules\\glob-parent\\test.js",
+        "node_modules\\graceful-fs\\fs.js",
+        "node_modules\\graceful-fs\\graceful-fs.js",
+        "node_modules\\graceful-fs\\legacy-streams.js",
+        "node_modules\\graceful-fs\\polyfills.js",
+        "node_modules\\inherits\\inherits.js",
+        "node_modules\\inherits\\inherits_browser.js",
+        "node_modules\\is-binary-path\\index.js",
+        "node_modules\\is-buffer\\index.js",
+        "node_modules\\is-dotfile\\index.js",
+        "node_modules\\is-equal-shallow\\index.js",
+        "node_modules\\is-extendable\\index.js",
+        "node_modules\\is-extglob\\index.js",
+        "node_modules\\is-glob\\index.js",
+        "node_modules\\is-number\\index.js",
+        "node_modules\\is-posix-bracket\\index.js",
+        "node_modules\\is-primitive\\index.js",
+        "node_modules\\isarray\\index.js",
+        "node_modules\\isarray\\test.js",
+        "node_modules\\isobject\\index.js",
+        "node_modules\\kind-of\\index.js",
+        "node_modules\\micromatch\\index.js",
+        "node_modules\\micromatch\\lib\\chars.js",
+        "node_modules\\micromatch\\lib\\expand.js",
+        "node_modules\\micromatch\\lib\\glob.js",
+        "node_modules\\micromatch\\lib\\utils.js",
+        "node_modules\\minimatch\\minimatch.js",
+        "node_modules\\normalize-path\\index.js",
+        "node_modules\\object.omit\\index.js",
+        "node_modules\\parse-glob\\index.js",
+        "node_modules\\path-is-absolute\\index.js",
+        "node_modules\\preserve\\index.js",
+        "node_modules\\preserve\\test.js",
+        "node_modules\\process-nextick-args\\index.js",
+        "node_modules\\process-nextick-args\\test.js",
+        "node_modules\\randomatic\\index.js",
+        "node_modules\\randomatic\\node_modules\\is-number\\index.js",
+        "node_modules\\randomatic\\node_modules\\is-number\\node_modules\\kind-of\\index.js",
+        "node_modules\\randomatic\\node_modules\\kind-of\\index.js",
+        "node_modules\\readable-stream\\duplex-browser.js",
+        "node_modules\\readable-stream\\duplex.js",
+        "node_modules\\readable-stream\\lib\\internal\\streams\\BufferList.js",
+        "node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js",
+        "node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js",
+        "node_modules\\readable-stream\\lib\\internal\\streams\\stream.js",
+        "node_modules\\readable-stream\\lib\\_stream_duplex.js",
+        "node_modules\\readable-stream\\lib\\_stream_passthrough.js",
+        "node_modules\\readable-stream\\lib\\_stream_readable.js",
+        "node_modules\\readable-stream\\lib\\_stream_transform.js",
+        "node_modules\\readable-stream\\lib\\_stream_writable.js",
+        "node_modules\\readable-stream\\passthrough.js",
+        "node_modules\\readable-stream\\readable-browser.js",
+        "node_modules\\readable-stream\\readable.js",
+        "node_modules\\readable-stream\\transform.js",
+        "node_modules\\readable-stream\\writable-browser.js",
+        "node_modules\\readable-stream\\writable.js",
+        "node_modules\\readdirp\\examples\\callback-api.js",
+        "node_modules\\readdirp\\examples\\grep.js",
+        "node_modules\\readdirp\\examples\\stream-api-pipe.js",
+        "node_modules\\readdirp\\examples\\stream-api.js",
+        "node_modules\\readdirp\\readdirp.js",
+        "node_modules\\readdirp\\stream-api.js",
+        "node_modules\\regex-cache\\index.js",
+        "node_modules\\remove-trailing-separator\\index.js",
+        "node_modules\\repeat-element\\index.js",
+        "node_modules\\repeat-string\\index.js",
+        "node_modules\\safe-buffer\\index.js",
+        "node_modules\\safe-buffer\\test.js",
+        "node_modules\\set-immediate-shim\\index.js",
+        "node_modules\\string_decoder\\lib\\string_decoder.js",
+        "node_modules\\util-deprecate\\browser.js",
+        "node_modules\\util-deprecate\\node.js"
+      ],
+      ".json": [
+        "node_modules\\anymatch\\package.json",
+        "node_modules\\arr-diff\\package.json",
+        "node_modules\\arr-flatten\\package.json",
+        "node_modules\\array-unique\\package.json",
+        "node_modules\\async-each\\package.json",
+        "node_modules\\atom-select-list\\package.json",
+        "node_modules\\balanced-match\\package.json",
+        "node_modules\\binary-extensions\\binary-extensions.json",
+        "node_modules\\binary-extensions\\package.json",
+        "node_modules\\brace-expansion\\package.json",
+        "node_modules\\braces\\package.json",
+        "node_modules\\chokidar\\package.json",
+        "node_modules\\coffee-script\\package.json",
+        "node_modules\\concat-map\\package.json",
+        "node_modules\\core-util-is\\package.json",
+        "node_modules\\cson-parser\\package.json",
+        "node_modules\\etch\\package.json",
+        "node_modules\\expand-brackets\\package.json",
+        "node_modules\\expand-range\\package.json",
+        "node_modules\\extglob\\package.json",
+        "node_modules\\filename-regex\\package.json",
+        "node_modules\\fill-range\\package.json",
+        "node_modules\\for-in\\package.json",
+        "node_modules\\for-own\\package.json",
+        "node_modules\\fuzzaldrin\\package.json",
+        "node_modules\\glob-base\\package.json",
+        "node_modules\\glob-parent\\package.json",
+        "node_modules\\graceful-fs\\package.json",
+        "node_modules\\inherits\\package.json",
+        "node_modules\\is-binary-path\\package.json",
+        "node_modules\\is-buffer\\package.json",
+        "node_modules\\is-dotfile\\package.json",
+        "node_modules\\is-equal-shallow\\package.json",
+        "node_modules\\is-extendable\\package.json",
+        "node_modules\\is-extglob\\package.json",
+        "node_modules\\is-glob\\package.json",
+        "node_modules\\is-number\\package.json",
+        "node_modules\\is-posix-bracket\\package.json",
+        "node_modules\\is-primitive\\package.json",
+        "node_modules\\isarray\\component.json",
+        "node_modules\\isarray\\package.json",
+        "node_modules\\isobject\\package.json",
+        "node_modules\\kind-of\\package.json",
+        "node_modules\\micromatch\\package.json",
+        "node_modules\\minimatch\\package.json",
+        "node_modules\\normalize-path\\package.json",
+        "node_modules\\object.omit\\package.json",
+        "node_modules\\parse-glob\\package.json",
+        "node_modules\\path-is-absolute\\package.json",
+        "node_modules\\preserve\\package.json",
+        "node_modules\\process-nextick-args\\package.json",
+        "node_modules\\randomatic\\node_modules\\is-number\\node_modules\\kind-of\\package.json",
+        "node_modules\\randomatic\\node_modules\\is-number\\package.json",
+        "node_modules\\randomatic\\node_modules\\kind-of\\package.json",
+        "node_modules\\randomatic\\package.json",
+        "node_modules\\readable-stream\\package.json",
+        "node_modules\\readdirp\\examples\\package.json",
+        "node_modules\\readdirp\\package.json",
+        "node_modules\\regex-cache\\package.json",
+        "node_modules\\remove-trailing-separator\\package.json",
+        "node_modules\\repeat-element\\package.json",
+        "node_modules\\repeat-string\\package.json",
+        "node_modules\\safe-buffer\\package.json",
+        "node_modules\\set-immediate-shim\\package.json",
+        "node_modules\\string_decoder\\package.json",
+        "node_modules\\util-deprecate\\package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "lib\\view",
+          ""
+        ],
+        "dependencies": {
+          "atom-select-list": "^0.0.16",
+          "chokidar": "^1.6.0",
+          "cson-parser": "^1.3.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\anymatch"
+        ],
+        "dependencies": {
+          "micromatch": "^2.1.5",
+          "normalize-path": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\arr-diff"
+        ],
+        "dependencies": {
+          "arr-flatten": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\atom-select-list",
+          "node_modules\\atom-select-list\\src",
+          "node_modules\\atom-select-list\\test"
+        ],
+        "dependencies": {
+          "etch": "0.9.0",
+          "fuzzaldrin": "^2.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\brace-expansion"
+        ],
+        "dependencies": {
+          "balanced-match": "^1.0.0",
+          "concat-map": "0.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\braces"
+        ],
+        "dependencies": {
+          "expand-range": "^1.8.1",
+          "preserve": "^0.2.0",
+          "repeat-element": "^1.1.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\chokidar",
+          "node_modules\\chokidar\\lib"
+        ],
+        "dependencies": {
+          "anymatch": "^1.3.0",
+          "async-each": "^1.0.0",
+          "fsevents": "^1.0.0",
+          "glob-parent": "^2.0.0",
+          "inherits": "^2.0.1",
+          "is-binary-path": "^1.0.0",
+          "is-glob": "^2.0.0",
+          "path-is-absolute": "^1.0.0",
+          "readdirp": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\cson-parser\\lib",
+          "node_modules\\cson-parser"
+        ],
+        "dependencies": {
+          "coffee-script": "^1.10.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\expand-brackets"
+        ],
+        "dependencies": {
+          "is-posix-bracket": "^0.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\expand-range"
+        ],
+        "dependencies": {
+          "fill-range": "^2.1.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\extglob"
+        ],
+        "dependencies": {
+          "is-extglob": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\fill-range"
+        ],
+        "dependencies": {
+          "is-number": "^2.1.0",
+          "isobject": "^2.0.0",
+          "randomatic": "^1.1.3",
+          "repeat-element": "^1.1.2",
+          "repeat-string": "^1.5.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\for-own"
+        ],
+        "dependencies": {
+          "for-in": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\glob-base"
+        ],
+        "dependencies": {
+          "glob-parent": "^2.0.0",
+          "is-glob": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\glob-parent"
+        ],
+        "dependencies": {
+          "is-glob": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\is-binary-path"
+        ],
+        "dependencies": {
+          "binary-extensions": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\is-equal-shallow"
+        ],
+        "dependencies": {
+          "is-primitive": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\is-glob"
+        ],
+        "dependencies": {
+          "is-extglob": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\is-number"
+        ],
+        "dependencies": {
+          "kind-of": "^3.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\isobject"
+        ],
+        "dependencies": {
+          "isarray": "1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\kind-of"
+        ],
+        "dependencies": {
+          "is-buffer": "^1.1.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\micromatch",
+          "node_modules\\micromatch\\lib"
+        ],
+        "dependencies": {
+          "arr-diff": "^2.0.0",
+          "array-unique": "^0.2.1",
+          "braces": "^1.8.2",
+          "expand-brackets": "^0.1.4",
+          "extglob": "^0.3.1",
+          "filename-regex": "^2.0.0",
+          "is-extglob": "^1.0.0",
+          "is-glob": "^2.0.1",
+          "kind-of": "^3.0.2",
+          "normalize-path": "^2.0.1",
+          "object.omit": "^2.0.0",
+          "parse-glob": "^3.0.4",
+          "regex-cache": "^0.4.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\minimatch"
+        ],
+        "dependencies": {
+          "brace-expansion": "^1.1.7"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\normalize-path"
+        ],
+        "dependencies": {
+          "remove-trailing-separator": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\object.omit"
+        ],
+        "dependencies": {
+          "for-own": "^0.1.4",
+          "is-extendable": "^0.1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\parse-glob"
+        ],
+        "dependencies": {
+          "glob-base": "^0.3.0",
+          "is-dotfile": "^1.0.0",
+          "is-extglob": "^1.0.0",
+          "is-glob": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\randomatic"
+        ],
+        "dependencies": {
+          "is-number": "^3.0.0",
+          "kind-of": "^4.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\randomatic\\node_modules\\is-number"
+        ],
+        "dependencies": {
+          "kind-of": "^3.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\randomatic\\node_modules\\is-number\\node_modules\\kind-of"
+        ],
+        "dependencies": {
+          "is-buffer": "^1.1.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\randomatic\\node_modules\\kind-of"
+        ],
+        "dependencies": {
+          "is-buffer": "^1.1.5"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\readable-stream",
+          "node_modules\\readable-stream\\lib\\internal\\streams",
+          "node_modules\\readable-stream\\lib"
+        ],
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "inherits": "~2.0.3",
+          "isarray": "~1.0.0",
+          "process-nextick-args": "~1.0.6",
+          "safe-buffer": "~5.1.1",
+          "string_decoder": "~1.0.3",
+          "util-deprecate": "~1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\readdirp\\examples",
+          "node_modules\\readdirp",
+          "node_modules\\readdirp\\test"
+        ],
+        "dependencies": {
+          "graceful-fs": "^4.1.2",
+          "minimatch": "^3.0.2",
+          "readable-stream": "^2.0.2",
+          "set-immediate-shim": "^1.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\regex-cache"
+        ],
+        "dependencies": {
+          "is-equal-shallow": "^0.1.3"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\string_decoder\\lib",
+          "node_modules\\string_decoder"
+        ],
+        "dependencies": {
+          "safe-buffer": "~5.1.0"
+        }
+      }
+    ]
+  }
+}

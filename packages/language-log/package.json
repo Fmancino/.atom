@@ -1,0 +1,68 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+        "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+        "type": "local"
+      },
+      "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-11805-14064-grv7uv.j2gl0oogvi"
+    ]
+  ],
+  "_from": "..\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+  "_id": "language-log@1.9.0",
+  "_inCache": true,
+  "_location": "/language-log",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+    "spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:..\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+  "_shasum": "959e4d203849dc3c053aa4542fbbc75b0d84ea59",
+  "_shrinkwrap": null,
+  "_spec": "C:\\Users\\A548446\\AppData\\Local\\Temp\\d-11805-14064-12g2cxb.ran8czbyb9\\package.tgz",
+  "_where": "C:\\Users\\A548446\\AppData\\Local\\Temp\\apm-install-dir-11805-14064-grv7uv.j2gl0oogvi",
+  "bugs": {
+    "url": "https://github.com/MRodalgaard/language-log/issues"
+  },
+  "dependencies": {
+    "atom-space-pen-views": "^2.1.0",
+    "moment": "^2.10.6"
+  },
+  "description": "Log syntax highlighting and filtering",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">= 1.13"
+  },
+  "homepage": "https://github.com/MRodalgaard/language-log",
+  "keywords": [
+    "log",
+    "syntax",
+    "highlight",
+    "syslog"
+  ],
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "language-log",
+  "optionalDependencies": {},
+  "readme": "# Log syntax highlighting and filtering in Atom [![Build Status](https://travis-ci.org/mrodalgaard/language-log.svg)](https://travis-ci.org/mrodalgaard/language-log)\n\nAdds syntax colors for common log formats in [Atom](https://atom.io/) - improving visual grepping.\n\nAlso adds a filtering bottom bar to separate out the statements you are not interested in (can be removed through package config).\n\n![language-log](https://raw.githubusercontent.com/mrodalgaard/language-log/master/screenshots/preview.png)\n\nAn Atom grammar that helps you quickly extract the important parts of various log files.\n\nThe filtering bottom bar contains the following elements:\n\n* Text filter input which filters based on line text (prepend an exclamation mark (`!`) to perform a reverse filter).\n* Tail button (`⇩`) which enables tailing of log changes (move to the bottom of the file).\n* Case sensitive/insensitive search button (`Aa`).\n* Level filter buttons which filters based on log level.\n\nNOTE: *soft wrap* is disabled by default and can be enabled via the package settings page.\n\n## Supported formats\n\n * [x] Android LogCat\n * [x] Nabto Log\n * [x] iOS Log / Stack trace\n * [x] Firefox crash log (use json raw dump)\n * [x] IDEA log\n * [x] Apache\n * [x] Syslog\n * [x] Windows CBS logs\n * [x] Common crash logs\n * [x] Common system logs from e.g. ~/Library/Logs/\n\nThere are a whole bunch of standard and non-standard log formats out there. Create an [issue](https://github.com/mrodalgaard/language-log/issues/new) (or even better a PR) if you are missing a format.\n\n## Tasks\n\n * [x] Log filtering\n * [x] Show warning on logs above 10,000 lines\n * [x] Log tail option\n * [x] Hide filtered lines\n * [x] Show number of lines (and filtered)\n * [ ] Timestamp search and filtering\n * [ ] Dynamically updating\n * [ ] Graph / visualization of entry types\n * [ ] Quick jump to errors\n\n## Notes\n\nFiles above 10,000 lines does not get grammar applied according to Atom.\n\n> Contributions, bug reports and feature requests are very welcome.\n\n> &nbsp; &nbsp; _- Martin_\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRodalgaard/language-log.git"
+  },
+  "version": "1.9.0"
+}
