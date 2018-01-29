@@ -5,7 +5,6 @@
       "dbg-gdb"
       "linter-gcc"
       "linter"
-      "linter-ui-default"
       "gpp-compiler"
       "spell-check"
     ]
