@@ -32,6 +32,7 @@
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 'atom-text-editor.vim-mode-plus.normal-mode':
   ', v': 'paste-with-newline'
+  ':': 'command-palette:toggle'
 
 'atom-text-editor':
   'ctrl-h': 'window:focus-pane-on-left'
